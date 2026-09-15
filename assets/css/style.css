@@ -556,3 +556,127 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Mode Switcher Tabs */
+.mode-tabs {
+    display: flex;
+    gap: 0.75rem;
+    background: rgba(11, 15, 25, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.mode-tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.25rem;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.mode-tab-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.mode-tab-btn.active {
+    background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+/* Workflow Explainer Cards */
+.workflow-explainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.workflow-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.workflow-card.active-flow {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.workflow-step-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+    margin-bottom: 0.5rem;
+}
+
+.workflow-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 0.4rem;
+}
+
+.workflow-card p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Upload Dropzone */
+.dropzone-box {
+    border: 2px dashed rgba(99, 102, 241, 0.35);
+    background: rgba(11, 15, 25, 0.5);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 1.5rem;
+}
+
+.dropzone-box:hover, .dropzone-box.dragover {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.dropzone-box svg {
+    width: 44px;
+    height: 44px;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+}
+
+.dropzone-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 0.25rem;
+}
+
+.dropzone-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
