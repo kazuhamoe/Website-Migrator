@@ -492,9 +492,10 @@ $currentSiteUrl = rtrim($protocol . $detectedHost . ($currentPath !== '/' && $cu
         .btn-success { background: linear-gradient(135deg, var(--success) 0%, #059669 100%); color: #fff; box-shadow: 0 4px 15px var(--success-glow); }
         .btn-danger { background: linear-gradient(135deg, var(--danger) 0%, #dc2626 100%); color: #fff; }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-        .req-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-        .req-item { background: rgba(11, 15, 25, 0.6); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.9rem; display: flex; align-items: center; justify-content: space-between; }
-        .req-badge { padding: 0.25rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+        .req-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .req-item { background: rgba(11, 15, 25, 0.6); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem 1.15rem; display: flex; align-items: center; justify-content: space-between; gap: 0.85rem; }
+        .req-info { flex: 1; min-width: 0; }
+        .req-badge { display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.3rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; flex-shrink: 0; line-height: 1; }
         .req-badge.pass { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
         .req-badge.fail { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
         .progress-container { margin: 1.5rem 0; }
