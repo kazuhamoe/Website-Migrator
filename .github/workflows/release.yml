@@ -1,0 +1,36 @@
+name: Build and Release Website Migrator
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: zip, pdo, pdo_mysql, mbstring, json
+
+      - name: Run Test Suite
+        run: php tests/run_tests.php
+
+      - name: Package Distribution ZIP
+        run: |
+          mkdir dist
+          zip -r dist/Website-Migrator.zip . -x ".git/*" ".github/*" "storage/temp/*" "tests/*" "*.zip"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: dist/Website-Migrator.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

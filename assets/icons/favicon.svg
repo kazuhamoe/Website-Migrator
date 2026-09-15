@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#6366f1" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#grad)" filter="url(#glow)"/>
+  <!-- Cloud & Arrow / Migrator Icon -->
+  <path d="M44.5 30.5C43.8 24.8 38.9 20.5 33 20.5C28.2 20.5 24.1 23.2 22 27.2C17 27.7 13 32 13 37.1C13 42.6 17.5 47 23 47H45C49.4 47 53 43.4 53 39C53 34.8 49.7 31.3 44.5 30.5ZM35 34V41H31V34H26L33 27L40 34H35Z" fill="#ffffff"/>
+</svg>
