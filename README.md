@@ -40,10 +40,15 @@ Migrating a website between hosting providers or moving from localhost (XAMPP/La
 - 💾 **Streaming MySQL Dumper:** Exports large MySQL tables line-by-line via PDO without exhausting server RAM.
 - 🔄 **Chunked Resumable Restorer:** Restores database dumps in small AJAX batches with byte-offset tracking, bypassing shared hosting execution timeouts.
 - 🧩 **Serialized String Length Recalculation:** Safely replaces old domain URLs inside PHP serialized strings without breaking WordPress themes, widgets, or plugins.
+- 📂 **Web Dropzone & Folder Browser:** Drag-and-drop `.zip` upload directly inside `installer.php` (no cPanel File Manager needed) plus interactive server directory browser modal.
+- 🛡️ **Auto-Fix Database Collation:** Automatically converts MySQL 8 `utf8mb4_0900_ai_ci` to `utf8mb4_unicode_ci` with dynamic retry fallback, preventing `#1273 Unknown collation` errors on MariaDB/older MySQL hosting.
+- ⚙️ **Auto-Fix WordPress .htaccess & Permalinks:** Automatically creates/updates standard WordPress rewrite rules to prevent 404 errors on child posts/pages.
+- 🔒 **Security Password Lock & Comprehensive Self-Destruct:** Lock `installer.php` with a master PIN/password to protect against unauthorized access on public hosting, with 1-click self-destruct cleanup of all installer scripts, locks, and archive dumps.
+- 🎯 **Flexible Scope Modes:** Choose Full Restore (Files + DB + URL), Files Only (Skip DB), or Database Only (.SQL).
+- 📋 **Post-Migration Checklist:** Integrated 3-step post-deployment checklist on success screen for seamless handoff.
 - 🛡️ **Smart Exclude Filter:** Excludes junk files (`node_modules`, `.git`, `.idea`, `cache`, error logs) for compact archive sizes.
 - 📦 **1-File Standalone Installer:** `installer.php` requires zero external CSS, JS, or frameworks on the destination server.
-- 🔥 **Self-Destruct Cleanup:** 1-click button cleans up `installer.php` and backup archives after deployment to maintain server security.
-- 🎨 **SaaS Dark Glassmorphic UI:** Built with sleek responsive glassmorphism, realtime progress bars, and monospace terminal logs.
+- 💻 **Live Terminal Console & Developer UI:** Built with sleek SaaS dark theme, live color-coded terminal log stream, and progress tracking.
 
 ---
 
@@ -57,10 +62,10 @@ graph LR
     end
 
     subgraph Destination Server
-        C -->|Upload| D[Run installer.php]
+        C -->|Web Dropzone or FTP| D[Run installer.php]
         D -->|Step 1: Chunked Extract| E[Files Restored]
         D -->|Step 2: Batch SQL Import| F[Database Restored]
-        D -->|Step 3: URL Replace| G[Config & URLs Updated]
+        D -->|Step 3: URL & .htaccess Replace| G[Config, Permalinks & URLs Updated]
         D -->|Step 4: Self-Destruct| H[Live & Secure Website!]
     end
 ```
@@ -72,16 +77,17 @@ graph LR
 ### 1. On the Source Server / Localhost:
 1. Place this folder into your web directory (e.g. `C:\xampp\htdocs\Website-Migrator` or your live site's directory).
 2. Open your browser and navigate to `http://localhost/Website-Migrator/index.php`.
-3. Check the auto-detected settings and database credentials.
+3. Select your export scope (Full Package, Files Only, or Database Only) and check the auto-detected credentials.
 4. Click **🚀 Mulai Pemaketan (Export)**.
 5. Once completed, download `migrator_package.zip` and `installer.php`.
 
 ### 2. On the Destination Server / Hosting:
-1. Upload `migrator_package.zip` and `installer.php` to your new hosting root directory (e.g. `public_html/`).
+1. Upload `installer.php` to your new hosting root directory (e.g. `public_html/`). You can upload `migrator_package.zip` via FTP/cPanel **OR** drag & drop it directly into the web browser via the built-in **Web Dropzone** on `installer.php`!
 2. Open your browser: `https://your-new-domain.com/installer.php`.
-3. Fill in your new MySQL database credentials and target domain.
-4. Click **🚀 Mulai Pemulihan (Restore Website)**.
-5. Once restored, click **🔒 Hapus Berkas Migrator (Self-Destruct)** to clean up the installer and backup archive.
+3. *(Optional)* Click **🛡️ Kunci Password** to lock the installer with a PIN/password to prevent unauthorized access.
+4. Fill in your new MySQL database credentials and target domain.
+5. Click **🚀 Mulai Pemulihan (Restore Website)**.
+6. Check the **Post-Migration Checklist** on the success screen, verify your site, and click **🔒 Hapus Berkas Migrator (Self-Destruct)** to completely wipe all installer files and archives.
 
 ---
 

@@ -40,10 +40,15 @@ Memindahkan website antar penyedia hosting atau dari localhost (XAMPP/Laragon) k
 - 💾 **Streaming MySQL Dumper:** Mengekspor database MySQL ukuran besar langsung ke file via PDO tanpa kehabisan RAM server.
 - 🔄 **Chunked Resumable Restorer:** Mengimpor database dalam batch AJAX dengan pencatatan byte-offset, bebas dari masalah script timeout di hosting murah.
 - 🧩 **Rekalkulasi Panjang String Serialized PHP:** Mengganti URL domain lama ke domain baru secara aman tanpa merusak widget, theme settings, atau plugin WordPress.
+- 📂 **Web Dropzone & Penjelajah Folder Server:** Upload berkas `.zip` langsung lewat browser di `installer.php` tanpa perlu buka File Manager cPanel, plus modal penjelajah folder server interaktif.
+- 🛡️ **Auto-Fix Database Collation:** Menukar otomatis collation MySQL 8 `utf8mb4_0900_ai_ci` menjadi `utf8mb4_unicode_ci` dengan retry fallback dinamis, mencegah error `#1273 Unknown collation` di MariaDB/MySQL 5.7 hosting cPanel.
+- ⚙️ **Auto-Fix Permalink & .htaccess (WordPress):** Otomatis membuat atau menyisipkan aturan mod_rewrite WordPress standar agar URL artikel tidak memicu error 404.
+- 🔒 **Proteksi Kunci Password & Self-Destruct Menyeluruh:** Kunci akses `installer.php` dengan PIN/password keamanan untuk hosting publik, serta tombol self-destruct 1-klik yang menghapus bersih seluruh skrip installer, file kunci `.migrator_lock.php`, dan arsip ZIP.
+- 🎯 **Pilihan Cakupan Fleksibel (Scope):** Bebas memilih Restore Lengkap (File + DB + URL), Hanya Berkas Website (Tanpa DB), atau Hanya Database (.SQL).
+- 📋 **Panduan Pasca-Migrasi (Post-Migration Checklist):** 3 langkah panduan praktis di layar sukses setelah proses pemulihan tuntas.
 - 🛡️ **Filter Pengecualian Pintar:** Mengabaikan berkas sampah (`node_modules`, `.git`, `.idea`, `cache`, log internal) sehingga file arsip lebih ringkas dan hemat kuota upload.
 - 📦 **Installer Mandiri 1-File:** `installer.php` tidak memerlukan file CSS/JS eksternal di server baru.
-- 🔥 **Pembersihan Otomatis (Self-Destruct):** Tombol 1-klik untuk menghapus berkas installer dan file arsip setelah selesai dipulihkan agar hosting Anda tetap aman.
-- 🎨 **Tampilan SaaS Dark Glassmorphism:** Desain modern, responsif untuk HP maupun desktop, dilengkapi progress bar realtime dan log terminal monospace.
+- 💻 **Live Terminal Console & Developer UI:** Tampilan modern dark developer theme dengan log terminal real-time berwarna dan bilah kemajuan interaktif.
 
 ---
 
@@ -52,17 +57,18 @@ Memindahkan website antar penyedia hosting atau dari localhost (XAMPP/Laragon) k
 ### 1. Di Server / Localhost Asal:
 1. Letakkan folder ini di web server Anda (misal `C:\xampp\htdocs\Website-Migrator` atau direktori web yang ingin dipindahkan).
 2. Buka browser dan kunjungi `http://localhost/Website-Migrator/index.php`.
-3. Periksa pengaturan dan database yang terdeteksi otomatis.
+3. Pilih cakupan pemaketan (Lengkap, Hanya Berkas, atau Hanya Database) dan periksa database yang terdeteksi otomatis.
 4. Klik tombol **🚀 Mulai Pemaketan (Export)**.
 5. Setelah selesai, unduh berkas `migrator_package.zip` dan `installer.php`.
 
 ### 2. Di Server / Hosting Tujuan:
-1. Upload berkas `migrator_package.zip` dan `installer.php` ke folder tujuan hosting baru (misalnya `public_html/`).
+1. Upload berkas `installer.php` ke folder tujuan hosting baru (misalnya `public_html/`). Anda dapat mengunggah `migrator_package.zip` via FTP/cPanel **ATAU** langsung seret & lepas (*drag and drop*) ke browser lewat **Web Dropzone** di `installer.php`!
 2. Buka browser ke alamat: `https://domain-baru-anda.com/installer.php`.
-3. Masukkan kredensial database MySQL baru di hosting tersebut.
-4. Masukkan URL domain lama dan domain baru.
-5. Klik **🚀 Mulai Pemulihan (Restore Website)**.
-6. Setelah restorasi tuntas, klik tombol **🔒 Hapus Berkas Migrator (Self-Destruct)** untuk membersihkan sisa installer.
+3. *(Opsional)* Klik **🛡️ Kunci Password** untuk mengamankan installer dengan PIN/password agar tidak dapat diakses orang asing.
+4. Masukkan kredensial database MySQL baru di hosting tersebut.
+5. Masukkan URL domain lama dan domain baru.
+6. Klik **🚀 Mulai Pemulihan (Restore Website)**.
+7. Ikuti **Panduan Pasca-Migrasi** di layar sukses, periksa website Anda, lalu klik tombol **🔒 Hapus Berkas Migrator (Self-Destruct)** untuk membersihkan seluruh sisa file installer dan backup.
 
 ---
 
