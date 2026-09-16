@@ -14,7 +14,7 @@ if (function_exists('ignore_user_abort')) {
     @ignore_user_abort(true);
 }
 
-define('INSTALLER_VERSION', '1.1.0');
+define('INSTALLER_VERSION', '1.0.0');
 
 if (session_status() === PHP_SESSION_NONE) {
     @session_start();
