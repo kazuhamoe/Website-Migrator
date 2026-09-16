@@ -1,6 +1,6 @@
 <?php
 define('MIGRATOR_INIT', true);
-define('MIGRATOR_VERSION', '1.0.0');
+define('MIGRATOR_VERSION', '1.1.0');
 
 require_once __DIR__ . '/app/SystemCheck.php';
 require_once __DIR__ . '/app/AutoDetector.php';

@@ -24,7 +24,7 @@ $current = isset($_GET['p']) ? $_GET['p'] : $page;
                     </svg>
                 </div>
                 <span class="logo-text">Website Migrator</span>
-                <span class="logo-badge">v1.0.0</span>
+                <span class="logo-badge">v1.1.0</span>
             </div>
 
             <nav class="nav">

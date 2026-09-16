@@ -1,5 +1,5 @@
 /**
- * Website Migrator v1.0.0 — Real Backend Controller for Bolt UI
+ * Website Migrator v1.1.0 — Real Backend Controller for Bolt UI
  * Crafted by @kazuhamoe
  */
 
