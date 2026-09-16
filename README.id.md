@@ -17,6 +17,25 @@
   Aplikasi PHP ringan, transparan, dan tanpa ketergantungan framework luar untuk memindahkan seluruh berkas website dan database MySQL antar server tanpa kendala timeout, batasan memori RAM, atau plugin berbayar.
 </p>
 
+<br/>
+
+<p align="center">
+  <img src="assets/screenshots/screen-export.png" alt="Website Migrator Dashboard" width="900" />
+</p>
+
+</div>
+
+---
+
+## 📸 Tangkapan Layar (Screenshots)
+
+| 1. Dashboard Ekspor (`index.php`) | 2. Impor & Pemulihan (`import.php`) |
+| :---: | :---: |
+| <img src="assets/screenshots/screen-export.png" width="450" alt="Dashboard Ekspor" /> | <img src="assets/screenshots/screen-import.png" width="450" alt="Impor & Pemulihan" /> |
+
+<div align="center">
+  <h3>3. Standalone 1-File Installer (<code>installer.php</code>)</h3>
+  <img src="assets/screenshots/screen-installer.png" width="850" alt="Standalone Installer" />
 </div>
 
 ---

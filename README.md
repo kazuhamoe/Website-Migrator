@@ -17,6 +17,25 @@
   A lightweight, transparent, zero-dependency PHP tool to clone and migrate entire websites and MySQL databases between servers without timeouts, memory limits, or third-party plugin lock-in.
 </p>
 
+<br/>
+
+<p align="center">
+  <img src="assets/screenshots/screen-export.png" alt="Website Migrator Dashboard" width="900" />
+</p>
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+| 1. Export Dashboard (`index.php`) | 2. Import & Restore (`import.php`) |
+| :---: | :---: |
+| <img src="assets/screenshots/screen-export.png" width="450" alt="Export Dashboard" /> | <img src="assets/screenshots/screen-import.png" width="450" alt="Import & Restore" /> |
+
+<div align="center">
+  <h3>3. Standalone 1-File Installer (<code>installer.php</code>)</h3>
+  <img src="assets/screenshots/screen-installer.png" width="850" alt="Standalone Installer" />
 </div>
 
 ---
