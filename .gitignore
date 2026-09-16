@@ -3,6 +3,7 @@ storage/temp/*
 !storage/temp/.gitkeep
 migrator_package.zip
 migrator_database.sql
+.migrator_lock.php
 *.sql
 *.zip
 *.tar.gz

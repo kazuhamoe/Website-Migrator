@@ -137,12 +137,27 @@ class DatabaseRestorer
                 if ($char === ';' && !$inString) {
                     $queryToRun = trim($currentQuery);
                     if (!empty($queryToRun)) {
+                        // Sanitasi collation MySQL 8 (utf8mb4_0900_ai_ci) agar kompatibel dengan MariaDB/MySQL 5.7 di hosting
+                        if (strpos($queryToRun, 'utf8mb4_0900_ai_ci') !== false) {
+                            $queryToRun = str_replace('utf8mb4_0900_ai_ci', 'utf8mb4_unicode_ci', $queryToRun);
+                        }
+
                         try {
                             $pdo->exec($queryToRun);
                             $statementCount++;
                         } catch (Throwable $e) {
-                            // Abaikan error drop non-fatal
-                            if (stripos($queryToRun, 'DROP TABLE') === false && stripos($queryToRun, 'DROP VIEW') === false) {
+                            // Coba fallback jika collation target hosting tidak mendukung utf8mb4_0900
+                            if (stripos($e->getMessage(), 'Unknown collation') !== false || stripos($e->getMessage(), '1273') !== false) {
+                                $fallbackQ = preg_replace('/COLLATE\s*=\s*utf8mb4_[a-z0-9_]+/i', 'COLLATE=utf8mb4_unicode_ci', $queryToRun);
+                                $fallbackQ = preg_replace('/COLLATE\s+utf8mb4_[a-z0-9_]+/i', 'COLLATE utf8mb4_unicode_ci', $fallbackQ);
+                                try {
+                                    $pdo->exec($fallbackQ);
+                                    $statementCount++;
+                                } catch (Throwable $e2) {
+                                    fclose($fp);
+                                    throw new RuntimeException("Query gagal di offset " . ftell($fp) . ": " . $e2->getMessage() . "\nSQL: " . substr($fallbackQ, 0, 150));
+                                }
+                            } elseif (stripos($queryToRun, 'DROP TABLE') === false && stripos($queryToRun, 'DROP VIEW') === false) {
                                 // Lempar error jika query penting gagal
                                 fclose($fp);
                                 throw new RuntimeException("Query gagal di offset " . ftell($fp) . ": " . $e->getMessage() . "\nSQL: " . substr($queryToRun, 0, 150));
